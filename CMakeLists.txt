@@ -114,5 +114,5 @@ target_link_libraries(gtest_main gtest)
 # or specifying the -Dgtest_build_samples=ON flag when running cmake.
 
 if (gtest_build_samples)
-  cxx_executable(sample1_unittest samples gtest_main samples/sample1.cpp)
+  cxx_executable(sample_unittest samples gtest_main samples/sample.c)
 endif()

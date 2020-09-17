@@ -40,8 +40,34 @@
 //
 // Don't forget gtest.h, which declares the testing framework.
 
+// Examples:
+//
+//   EXPECT_NE(Foo(), 5);
+//   EXPECT_EQ(a_pointer, NULL);
+//   ASSERT_LT(i, array_size);
+//   ASSERT_GT(records.size(), 0) << "There is no record left.";
+
+//    * {ASSERT|EXPECT}_EQ(v1, v2): Tests that v1 == v2
+//    * {ASSERT|EXPECT}_NE(v1, v2): Tests that v1 != v2
+//    * {ASSERT|EXPECT}_LT(v1, v2): Tests that v1 < v2
+//    * {ASSERT|EXPECT}_LE(v1, v2): Tests that v1 <= v2
+//    * {ASSERT|EXPECT}_GT(v1, v2): Tests that v1 > v2
+//    * {ASSERT|EXPECT}_GE(v1, v2): Tests that v1 >= v2
+
+//    * {ASSERT|EXPECT}_STREQ(s1, s2):     Tests that s1 == s2
+//    * {ASSERT|EXPECT}_STRNE(s1, s2):     Tests that s1 != s2
+//    * {ASSERT|EXPECT}_STRCASEEQ(s1, s2): Tests that s1 == s2, ignoring case
+//    * {ASSERT|EXPECT}_STRCASENE(s1, s2): Tests that s1 != s2, ignoring case
+
+//    * {ASSERT|EXPECT}_FLOAT_EQ(val1, val2):
+//         Tests that two float values are almost equal.
+//    * {ASSERT|EXPECT}_DOUBLE_EQ(val1, val2):
+//         Tests that two double values are almost equal.
+//    * {ASSERT|EXPECT}_NEAR(v1, v2, abs_error):
+//         Tests that v1 and v2 are within the given distance to each other.
+
 #include <limits.h>
-#include "sample1.h"
+#include "sample.h"
 #include "gtest/gtest.h"
 namespace {
 
@@ -74,39 +100,39 @@ namespace {
 
 // Tests factorial of negative numbers.
 TEST(FactorialTest, Negative) {
-  // This test is named "Negative", and belongs to the "FactorialTest"
-  // test case.
-  EXPECT_EQ(1, Factorial(-5));
-  EXPECT_EQ(1, Factorial(-1));
-  EXPECT_GT(Factorial(-10), 0);
+    // This test is named "Negative", and belongs to the "FactorialTest"
+    // test case.
+    EXPECT_EQ(1, Factorial(-5));
+    EXPECT_EQ(1, Factorial(-1));
+    EXPECT_GT(Factorial(-10), 0);
 
-  // <TechnicalDetails>
-  //
-  // EXPECT_EQ(expected, actual) is the same as
-  //
-  //   EXPECT_TRUE((expected) == (actual))
-  //
-  // except that it will print both the expected value and the actual
-  // value when the assertion fails.  This is very helpful for
-  // debugging.  Therefore in this case EXPECT_EQ is preferred.
-  //
-  // On the other hand, EXPECT_TRUE accepts any Boolean expression,
-  // and is thus more general.
-  //
-  // </TechnicalDetails>
+    // <TechnicalDetails>
+    //
+    // EXPECT_EQ(expected, actual) is the same as
+    //
+    //   EXPECT_TRUE((expected) == (actual))
+    //
+    // except that it will print both the expected value and the actual
+    // value when the assertion fails.  This is very helpful for
+    // debugging.  Therefore in this case EXPECT_EQ is preferred.
+    //
+    // On the other hand, EXPECT_TRUE accepts any Boolean expression,
+    // and is thus more general.
+    //
+    // </TechnicalDetails>
 }
 
 // Tests factorial of 0.
 TEST(FactorialTest, Zero) {
-  EXPECT_EQ(1, Factorial(0));
+    EXPECT_EQ(1, Factorial(0));
 }
 
 // Tests factorial of positive numbers.
 TEST(FactorialTest, Positive) {
-  EXPECT_EQ(1, Factorial(1));
-  EXPECT_EQ(2, Factorial(2));
-  EXPECT_EQ(6, Factorial(3));
-  EXPECT_EQ(40320, Factorial(8));
+    EXPECT_EQ(1, Factorial(1));
+    EXPECT_EQ(2, Factorial(2));
+    EXPECT_EQ(6, Factorial(3));
+    EXPECT_EQ(40320, Factorial(8));
 }
 
 
@@ -114,27 +140,27 @@ TEST(FactorialTest, Positive) {
 
 // Tests negative input.
 TEST(IsPrimeTest, Negative) {
-  // This test belongs to the IsPrimeTest test case.
+    // This test belongs to the IsPrimeTest test case.
 
-  EXPECT_FALSE(IsPrime(-1));
-  EXPECT_FALSE(IsPrime(-2));
-  EXPECT_FALSE(IsPrime(INT_MIN));
+    EXPECT_FALSE(IsPrime(-1));
+    EXPECT_FALSE(IsPrime(-2));
+    EXPECT_FALSE(IsPrime(INT_MIN));
 }
 
 // Tests some trivial cases.
 TEST(IsPrimeTest, Trivial) {
-  EXPECT_FALSE(IsPrime(0));
-  EXPECT_FALSE(IsPrime(1));
-  EXPECT_TRUE(IsPrime(2));
-  EXPECT_TRUE(IsPrime(3));
+    EXPECT_FALSE(IsPrime(0));
+    EXPECT_FALSE(IsPrime(1));
+    EXPECT_TRUE(IsPrime(2));
+    EXPECT_TRUE(IsPrime(3));
 }
 
 // Tests positive input.
 TEST(IsPrimeTest, Positive) {
-  EXPECT_FALSE(IsPrime(4));
-  EXPECT_TRUE(IsPrime(5));
-  EXPECT_FALSE(IsPrime(6));
-  EXPECT_TRUE(IsPrime(23));
+    EXPECT_FALSE(IsPrime(4));
+    EXPECT_TRUE(IsPrime(5));
+    EXPECT_FALSE(IsPrime(6));
+    EXPECT_TRUE(IsPrime(23));
 }
 }  // namespace
 

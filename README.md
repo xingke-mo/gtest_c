@@ -242,3 +242,8 @@ instead of
     TEST(SomeTest, DoesThis) { ... }
 
 in order to define a test.
+
+### Notes:
+
+filename format     : *.cpp
+testcase file format: *_unittest.cpp
